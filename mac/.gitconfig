@@ -1,0 +1,9 @@
+
+[ghq]
+    root = ~/develop/golang/src/github.com/ryomak
+
+[user]
+	name = ryomak
+	email = ryooomaaa0413@outlook.com
+[http]
+	postBuffer = 157286400
