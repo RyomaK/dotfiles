@@ -1,1 +1,0 @@
-/Users/kurisu/dotfiles/.config/fisherman/fnm/conf.d/fnm.fish
