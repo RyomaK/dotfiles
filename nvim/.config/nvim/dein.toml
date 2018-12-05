@@ -1,19 +1,71 @@
 [[plugins]]
 repo = 'vim-airline/vim-airline'
-depends = ['vim-airline-themes']
-hook_add = '''   
-    set laststatus=2
-    let g:airline_theme = 'deus'
-'''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
+hook_add = '''
+  let g:airline_theme='bubblegum'
+  let g:airline_powerline_fonts = 1
+  let g:airline#extensions#branch#enabled = 0
+  let g:airline#extensions#readonly#enabled = 0
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline_section_c = ''
+'''
 
 [[plugins]]
-repo = 'Shougo/neosnippet.vim'
+repo = 'scrooloose/nerdtree'
 
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+  let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_start_level = 2
+  let g:indent_guides_guide_size = 1
+'''
+
+[[plugins]] # 括弧補完
+repo = "cohama/lexima.vim"
+
+[[plugins]] # auto indent
+repo = "Chiel92/vim-autoformat"
+
+[[plugins]] # syntax highlight
+repo = 'othree/yajs.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+  let g:deoplete#enable_at_startup = 1
+  let g:python_host_prog='/usr/local/bin/python2'
+  let g:python3_host_prog='/usr/local/bin/python3'
+'''
+
+[[plugins]] # 末尾spaceの可視化
+repo = 'ntpeters/vim-better-whitespace'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --bin'
+merged = '0'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = 'fzf'
+hook_add = '''
+  nmap " :Buffers
+  nmap ' :Files
+  nmap 'a :Ag
+'''
+
+[[plugins]] # snake_case CamelCaseのmotionに対応
+repo = 'chaoren/vim-wordmotion'
+hook_add = '''
+  let g:wordmotion_spaces = '_-.'
+'''
 
 [[plugins]]
 repo = 'fatih/vim-go'
@@ -25,59 +77,30 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-depends = ['context_filetype.vim']
-on_event = 'InsertCharPre'
-on_ft = 'snippet'
-
-[[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
-depends = 'deoplete.nvim'
-on_ft = ['rust', 'vue']
-build = './install.sh'
-hook_source = '''
-set hidden
-let g:LanguageClient_serverCommands = {
-    \ 'vue': ['vls'],
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['node', '~/langserver/javascript-typescript-langserver/lib/language-server-stdio'],
-    \ }
-let g:LanguageClient_autoStart = 1
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-'''
-
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-depends = 'context_filetype.vim'
-on_i = 1
-hook_source = '''
-let g:deoplete#enable_at_startup = 1
-'''
-
-[[plugins]]
-repo = 'scrooloose/nerdtree'
-
-[[plugins]]
-repo = 'jdkanani/vim-material-theme'
+rev ='next' 
+build = 'bash install.sh'
 hook_add = '''
-  colorscheme material-theme
-  set background=dark
+  set hidden
+  let g:LanguageClient_serverCommands = {
+      \ 'ruby': ['solargraph', 'stdio'],
+      \ 'vue': ['vls'],
+      \ 'sh': ['bash-language-server', 'start'],
+      \ 'dockerfile': ['docker-langserver', '--stdio'],
+      \ 'javascript': ['node', '~/langserver/javascript-typescript-langserver/lib/language-server-stdio'],
+      \ 'yaml': ['node', '~/langserver/yaml-language-server/out/server/src/server.js', '--stdio'],
+      \ }
+  " Or map each action separately
+  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+  nnoremap 'rn :call LanguageClient#textDocument_rename()<CR>
+  nnoremap <C-t> <C-o>
 '''
 
-[[plugins]] # 括弧補完
-repo = "cohama/lexima.vim"
-
-[[plugins]] # auto indent
-repo = "Chiel92/vim-autoformat"
-
 [[plugins]]
-repo = "nsf/gocode"
-
-[[plugins]]
-repo = "posva/vim-vue"
+repo = 'w0rp/ale'
+hook_add = '''
+  let g:ale_sign_error = '⌶'
+  let g:ale_sign_warning = '▻'
+  highlight link ALEWarningSign Special
+'''

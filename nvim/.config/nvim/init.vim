@@ -1,111 +1,156 @@
-"mozicode
-scriptencoding utf-8
-set encoding=utf-8
+" fish使ってるとエラー出ることがある
+set shell=/bin/bash
+""""エンコード""""
+set encoding=UTF-8
+set termencoding=UTF-8
+set fileformats=unix,dos,mac
+set fileencodings=UTF-8
 
-
-"vimはPOSIX互換シェルのみ
-if $SHELL =~ '/fish$'
-	set shell=bash
-endif
-"syntax
+""""表示系""""
+" 色付き表示
 syntax on
-
-
-filetype plugin indent on
-syntax enable
-
-"vim衝突 
-"行番号の表示
+" 行番号の表示
 set number
-"カーソル行の強調
-set cursorline
-"右下に表示される行・列の番号を表示する
+autocmd ColorScheme * highlight LineNr ctermfg=10
+" 右下に表示される行・列の番号を表示する
 set ruler
-" markdownのハイライトを有効にする
-set syntax=markdown
-" ステータスライン
-set laststatus=2
-
-"color
-set t_Co=256
-
-" truecolor
-set termguicolors
-" 背景色
-
-"操作系"
-" 入力モード中に素早くQQと入力した場合はESCとみなす
-inoremap jj <Esc>
-inoremap <c-]> <Esc>
-" j, k による移動を折り返されたテキストでも自然に振る舞うように変更
-nnoremap j gj
-nnoremap k gk
-" tabをスペース2個分に
-set tabstop=2
-"ctrl+jkhlで上下左右
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
-
-"tabショートカット
-nnoremap st :<C-u>tabnew<CR>
-nnoremap sl gt
-nnoremap sh gT
-" vimが自動で生成するtab幅をスペース2個に
-set shiftwidth=2
-"" TABキーを押した際にタブ文字の代わりにスペースを入れる
-set expandtab
-
+" 検索した文字を強調
+set nohlsearch
+" タイトル表示
+set title
+" 対応括弧をハイライト表示する
+set showmatch
+" 対応括弧の表示秒数を3秒にする
+set matchtime=3
 "ポップアップバーの色
 hi Pmenu ctermbg=6
 hi PmenuSel ctermbg=4
 hi PmenuSbar ctermbg=2
 hi PmenuThumb ctermfg=3
+" markdownのハイライトを有効にする
+set syntax=markdown
+" ステータスライン
+set laststatus=2
+" メッセージ表示欄
+"set cmdheight=2
+" コマンドを画面下に表示させる
+"set showcmd
+" タブ、空白、改行の可視化
+" set list
+set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
+" vue.js
+autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
+" □や○文字が崩れる問題を解決
+"set ambiwidth=double
+" Scala HighLight
+" spell check
+set spelllang+=cjk
+set spell
+hi clear SpellBad
+hi SpellBad cterm=underline
+" set colorを制限して重くなるのを回避
+set synmaxcol=200
+" haskell indent
+autocmd Filetype haskell setlocal ts=4 sts=4 sw=4 expandtab
+" 括弧の対応色の色
+let loaded_matchparen = 1
+" cursor line
+set cursorline
 
-"GoImports
-let g:go_fmt_command = "goimports"
+"color schema
+colorscheme skyhawk
 
-"err syntax
-autocmd FileType go :highlight goErr cterm=bold ctermfg=214
-autocmd FileType go :match goErr /\<err\>/
-
-"自動tree
-"autocmd VimEnter * execute 'NERDTree'
-"
-"ヤンク＝＞ctrl+v
-set clipboard+=unnamed
-
-"backspace 
+""""操作系""""
+" tabをスペース2個分に
+set expandtab
+set tabstop=2
+" vimが自動で生成するtab幅をスペース2個に
+set shiftwidth=2
+" 入力モード中に素早くJJと入力した場合はESCとみなす
+inoremap jj <Esc>
+" 文字がない場所にもカーソルを移動できるようにする
+set virtualedit=all
+" backspace効かないので
 set backspace=indent,eol,start
-
-"tab表示
-set list
-set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
-highlight specialKey ctermfg=darkgray
-
-" dein setup
-if &compatible
-	set nocompatible 
+" マウス対応
+"set mouse=a
+"set ttymouse=xterm2
+" j, k による移動を折り返されたテキストでも自然に振る舞うように変更
+nnoremap j gj
+nnoremap k gk
+" INSERTモードでもhjkl移動を可能に
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+" インクリメンタルサーチ. 1文字入力毎に検索を行う
+set incsearch
+" 検索パターンに大文字小文字を区別しない
+set ignorecase
+" 検索パターンに大文字を含んでいたら大文字小文字を区別する
+set smartcase
+" 検索結果をハイライト
+set hlsearch
+" クリップボードにコピー
+set clipboard+=unnamedplus
+" クリップボードからペーストのときインデントしない
+if &term =~ "xterm"
+  let &t_SI .= "\e[?2004h"
+  let &t_EI .= "\e[?2004l"
+  let &pastetoggle = "\e[201~"
+  function XTermPasteBegin(ret)
+    set paste
+    return a:ret
+  endfunction
+  inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 endif
-let deinroot = "~/.config/dein"
-let $DEIN_PATH= deinroot . "/.cache/repos/github.com/Shougo/dein.vim"
+" escape遅いの回避
+set ttimeoutlen=10
+" vim-tagsのjumpをgdに
+nnoremap gd g<C-]>
+"""others"""
+" 補完の際の大文字小文字の区別しない
+set infercase
+" ex modeでの補完
+set wildmode=longest:full,full
+" 対応括弧に<と>のペアを追加
+set matchpairs& matchpairs+=<:>
+" vi非互換モード
+set nocompatible
+" json format
+" autocmd BufWritePre *.json :execute '%!python -m json.tool'
+" 文字化け対策
+set ttimeout
+set ttimeoutlen=50
+
+
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" ~/.config/deinで
+" sh installer.sh .
+" したと仮定
+let deinroot = "~/.config/dein/."
+let $DEIN_PATH= deinroot . "/repos/github.com/Shougo/dein.vim"
 let s:toml = "~/.config/nvim/dein.toml"
 
 " Required:
 set runtimepath+=$DEIN_PATH
 
+" Required:
 if dein#load_state(deinroot)
-	call dein#begin(deinroot)
-	call dein#add($DEIN_PATH)
-  call dein#load_toml(s:toml,{'lazy': 0})
-
-	call dein#end()
-	call dein#save_state()
+  call dein#begin(deinroot)
+  call dein#add($DEIN_PATH)
+  call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#end()
+  call dein#save_state()
 endif
 
-" 未インストールを確認
-if dein#check_install()
-	call dein#install()
-endif
+" Required:
+filetype plugin indent on
+syntax enable
+
+"End dein Scripts-------------------------
 
