@@ -1,4 +1,4 @@
-# name: bobthefish
+ # name: bobthefish
 #
 # bobthefish is a Powerline-style, Git-aware fish theme optimized for awesome.
 #

@@ -17,6 +17,10 @@ if test -z $(which fish); then
   brew install fish
 fi
 
+echo "-----power line -------"
+git clone git@github.com:powerline/fonts.git
+cd fonts && ./install.sh
+
 echo "----- link fish -----"
 LINK_FILES=(.config/fish)
 
