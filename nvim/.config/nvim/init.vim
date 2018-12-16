@@ -148,6 +148,10 @@ if dein#load_state(deinroot)
   call dein#save_state()
 endif
 
+if dein#check_install()
+  call dein#install()
+endif
+
 " Required:
 filetype plugin indent on
 syntax enable

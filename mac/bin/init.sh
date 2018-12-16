@@ -27,9 +27,6 @@ fi
 if [ ! -d "/Applications/HyperSwitch.app" ]; then
   brew cask install hyperswitch
 fi
-if [ ! -d "/Applications/Evernote.app" ]; then
-  brew cask install evernote
-fi
 if [ ! -d "/Applications/Slack.app" ]; then
   brew cask install slack
 fi
@@ -39,3 +36,8 @@ if [ ! -d "/Applications/Docker.app" ]; then
 fi
 
 echo "##### finish to install mac apps #####"
+
+if test -z $(which go);then
+  brew install go
+fi
+fi

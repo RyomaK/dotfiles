@@ -68,15 +68,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'fatih/vim-go'
-hook_add = '''
-  let g:go_highlight_functions = 1
-  let g:go_highlight_methods = 1
-  let g:go_highlight_structs = 1
-  let g:go_fmt_command = "goimports"
-'''
-
-[[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
 rev ='next' 
 build = 'bash install.sh'
@@ -85,8 +76,8 @@ hook_add = '''
   let g:LanguageClient_serverCommands = {
       \ 'ruby': ['solargraph', 'stdio'],
       \ 'vue': ['vls'],
+      \ 'go': ['go-langserver','stdio'],
       \ 'sh': ['bash-language-server', 'start'],
-      \ 'dockerfile': ['docker-langserver', '--stdio'],
       \ 'javascript': ['node', '~/langserver/javascript-typescript-langserver/lib/language-server-stdio'],
       \ 'yaml': ['node', '~/langserver/yaml-language-server/out/server/src/server.js', '--stdio'],
       \ }

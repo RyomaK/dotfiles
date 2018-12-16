@@ -30,11 +30,6 @@ if test -z $(which bash-language-server); then
   yarn global add bash-language-server
 fi
 
-echo "----- install dockerfile-language-server -----"
-if test -z $(which docker-langserver); then
-  yarn global add dockerfile-language-server-nodejs
-fi
-
 echo "-----vue language server ----"
 if test -z $(which vls); then
   npm install -g vue-language-server
@@ -49,6 +44,11 @@ else
     cd javascript-typescript-langserver && \
     yarn && yarn build && \
     cd $CURRENT_PATH
+fi
+
+echo "-------install go-langsever---------"
+if test -z $(which go-langserver);then
+  go get -u github.com/sourcegraph/go-langserver
 fi
 
 echo "----- install yaml-language-server -----"

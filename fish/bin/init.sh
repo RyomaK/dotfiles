@@ -7,7 +7,6 @@ if test -z $(brew --prefix); then
   brew install caskroom/cask/brew-cask
 fi
 
-
 if test -z $(which fisherman); then
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/.config/fish/functions/fisher.fish
 fi
