@@ -11,6 +11,9 @@ set -x PKG_CONFIG_PATH `brew --prefix qt5`/lib/pkgconfig
 #rbenv
 set -x PATH $PATH $HOME/.rbenv/bin
 rbenv init - | source
+#goenv
+set -x PATH $PATH $HOME/.goenv/bin
+goenv init - | source
 #alias
 alias vim 'nvim'
 alias goland '/usr/local/bin/goland'

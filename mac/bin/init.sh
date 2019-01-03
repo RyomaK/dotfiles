@@ -38,6 +38,10 @@ fi
 echo "##### finish to install mac apps #####"
 
 if test -z $(which go);then
+  brew install goenv
+fi
+
+if test -z $(which go);then
   brew install go
 fi
 fi

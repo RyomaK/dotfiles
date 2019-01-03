@@ -150,7 +150,7 @@ if dein#load_state('~/.vim/dein/')
 
   " Let dein manage dein
   " Required:
-  call dein#add('~/.vim/dein//repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.config/dein/repos/github.com/Shougo/dein.vim')
   call dein#load_toml(s:toml, {'lazy': 0})
 
   " Add or remove your plugins here like this:
