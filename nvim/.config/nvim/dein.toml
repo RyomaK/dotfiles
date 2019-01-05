@@ -69,7 +69,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
-rev ='next' 
+rev ='next'
 build = 'bash install.sh'
 hook_add = '''
   set hidden
