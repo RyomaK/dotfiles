@@ -11,7 +11,6 @@ set fileencodings=UTF-8
 syntax on
 " 行番号の表示
 set number
-autocmd ColorScheme * highlight LineNr ctermfg=10
 " 右下に表示される行・列の番号を表示する
 set ruler
 " 検索した文字を強調
@@ -56,7 +55,10 @@ let loaded_matchparen = 1
 set cursorline
 
 "color schema
-colorscheme skyhawk
+syntax enable
+set background=dark
+colorscheme material-theme
+set termguicolors
 
 """"操作系""""
 " tabをスペース2個分に
