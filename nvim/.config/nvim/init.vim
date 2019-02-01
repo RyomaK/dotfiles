@@ -38,8 +38,6 @@ set laststatus=2
 " タブ、空白、改行の可視化
 " set list
 set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
-" vue.js
-autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
 " □や○文字が崩れる問題を解決
 "set ambiwidth=double
 " Scala HighLight

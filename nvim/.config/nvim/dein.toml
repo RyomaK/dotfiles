@@ -68,25 +68,26 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev ='next'
-build = 'bash install.sh'
-hook_add = '''
-  set hidden
-  let g:LanguageClient_serverCommands = {
-      \ 'ruby': ['solargraph', 'stdio'],
-      \ 'vue': ['vls'],
-      \ 'go': ['go-langserver','stdio','-format-tool','goimports','-gocode-completion-enabled','true'],
-      \ 'sh': ['bash-language-server', 'start'],
-      \ 'javascript': ['node', '~/langserver/javascript-typescript-langserver/lib/language-server-stdio'],
-      \ 'yaml': ['node', '~/langserver/yaml-language-server/out/server/src/server.js', '--stdio'],
-      \ }
-  " Or map each action separately
-  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-  nnoremap 'rn :call LanguageClient#textDocument_rename()<CR>
-  nnoremap <C-t> <C-o>
-'''
+ repo = 'autozimu/LanguageClient-neovim'
+ rev ='next'
+ on_ft = ['go', 'vue','ruby','sh','javascript','yaml']
+ build = 'bash install.sh'
+ hook_add = '''
+   set hidden
+   let g:LanguageClient_serverCommands = {
+       \ 'ruby': ['solargraph', 'stdio'],
+       \ 'vue': ['vls'],
+       \ 'go': ['go-langserver','-gocodecompletion'],
+       \ 'sh': ['bash-language-server', 'start'],
+       \ 'javascript': ['node', '~/langserver/javascript-typescript-langserver/lib/language-server-stdio'],
+       \ 'yaml': ['node', '~/langserver/yaml-language-server/out/server/src/server.js', '--stdio'],
+       \ }
+   " Or map each action separately
+   nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+   nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+   nnoremap 'rn :call LanguageClient#textDocument_rename()<CR>
+   nnoremap <C-t> <C-o>
+ '''
 
 [[plugins]]
 repo = 'w0rp/ale'
