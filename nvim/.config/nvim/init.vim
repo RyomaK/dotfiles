@@ -21,17 +21,11 @@ set title
 set showmatch
 " 対応括弧の表示秒数を3秒にする
 set matchtime=3
-"ポップアップバーの色
-hi Pmenu ctermbg=6
-hi PmenuSel ctermbg=4
-hi PmenuSbar ctermbg=2
-hi PmenuThumb ctermfg=3
 " markdownのハイライトを有効にする
 set syntax=markdown
 " ステータスライン
 set laststatus=2
 " メッセージ表示欄
-"set cmdheight=2
 " コマンドを画面下に表示させる
 "set showcmd
 " タブ、空白、改行の可視化
@@ -39,7 +33,6 @@ set laststatus=2
 set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
 " □や○文字が崩れる問題を解決
 "set ambiwidth=double
-" Scala HighLight
 " spell check
 set spelllang+=cjk
 set spell
