@@ -29,8 +29,11 @@ set laststatus=2
 " コマンドを画面下に表示させる
 "set showcmd
 " タブ、空白、改行の可視化
-" set list
-set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
+set list
+" set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
+" set listchars=tab:>-,trail:_,extends:>-,precedes:<,nbsp:%
+set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
+
 " □や○文字が崩れる問題を解決
 "set ambiwidth=double
 " spell check
