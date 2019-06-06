@@ -119,6 +119,9 @@ set nocompatible
 set ttimeout
 set ttimeoutlen=50
 
+" nerdredd"
+"
+autocmd VimEnter * execute 'NERDTree'
 
 "dein Scripts-----------------------------
 if &compatible

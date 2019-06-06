@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/kurisu/Desktop/qmk_firmware/keyboards'
+let g:netrw_dirhist_2='/Users/kurisu/develop/golang/src/github.com/ryomak/books-code/day8/no1/vendor/github.com/ChimeraCoder'
+let g:netrw_dirhist_3='/Users/kurisu/develop/golang/src/github.com/ryomak/books-code/day8/no1/vendor/github.com/ChimeraCoder/anaconda'
+let g:netrw_dirhist_4='/Users/kurisu/develop/golang/src/github.com/ryomak/books-code/day8/no1/vendor/github.com/ChimeraCoder'
+let g:netrw_dirhist_5='/Users/kurisu/develop/golang/src/github.com/ryomak/books-code/day8/no1/vendor/github.com/ChimeraCoder/anaconda'
+let g:netrw_dirhist_6='/Users/kurisu/develop/golang/src/github.com/ryomak/books-code/day8/no1/vendor/github.com/ChimeraCoder'
+let g:netrw_dirhist_7='/Users/kurisu/develop/golang/src/github.com/ryomak/books-code/day8/no1/vendor/github.com/ChimeraCoder/anaconda'
+let g:netrw_dirhist_8='/Users/kurisu/.config'
+let g:netrw_dirhist_9='/Users/kurisu/.config/fnm'

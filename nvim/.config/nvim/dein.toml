@@ -85,3 +85,6 @@ hook_add = '''
   let g:ale_sign_warning = '▻'
   highlight link ALEWarningSign Special
 '''
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
