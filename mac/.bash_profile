@@ -9,3 +9,6 @@ export PATH=$HOME/.rbenv/bin:$PATH
 #export PATH=$HOME/develop/cmd:$PATH
 Alias tree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/|  /g'"
 if which rbenv > /dev/null; then eval "$(rbenv init -)";
+
+# added by Anaconda3 5.0.1 installer
+export PATH="/Users/kurisu/anaconda3/bin:$PATH"

@@ -7,3 +7,5 @@
 	email = ryooomaaa0413@outlook.com
 [http]
 	postBuffer = 157286400
+[core]
+	excludesfile = .gitignore_global
