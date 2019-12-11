@@ -52,8 +52,8 @@ set cursorline
 
 "color schema
 syntax enable
-set background=dark
-colorscheme material-theme
+" set background=dark
+colorscheme forest-night
 set termguicolors
 
 """"操作系""""
