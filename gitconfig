@@ -1,5 +1,5 @@
 [ghq]
-    root = ~/workspace
+    root = ~/src
 [web]
     browser = google-chrome
 [alias]
@@ -30,3 +30,6 @@
     su = submodule update
     delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
     fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
+[user]
+	name = ryomak
+	email = ryooomaaa0413@gmail.com

@@ -6,7 +6,7 @@ deps:
 	which brew || /usr/bin/ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew:
-	brew install wget hub tig tree tmux reattach-to-user-namespace ghq peco node goenv
+	brew install wget hub tig tree tmux reattach-to-user-namespace ghq peco goenv nodenv coreutils
 	brew cleanup
 
 brew-cask:
