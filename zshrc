@@ -4,15 +4,13 @@ source $HOME/src/github.com/zsh-users/antigen/antigen.zsh
 antigen use oh-my-zsh
 
 antigen bundle git
-antigen bundle mvn
-antigen bundle golang
-antigen theme candy
-
+antigen theme agnoster
 antigen apply
 
 # for brew
 export PATH=$PATH:/usr/local/bin
 
+setopt nonomatch
 
 # for history
 HISTFILE=${HOME}/.zsh_history
@@ -43,7 +41,7 @@ function peco_select_history() {
   zle -R -c               # refresh
 }
 zle -N peco_select_history
-bindkey '^R' peco_select_history
+bindkey '' peco_select_history
 
 function peco_src() {
   local src_dir=$(ghq list --full-path | peco --query "$LBUFFER")
@@ -63,6 +61,5 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 
 # for custom
 source $HOME/.zshrc.mine
-
 
 

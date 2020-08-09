@@ -8,14 +8,14 @@
     alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
     b = branch -a
     br = browse-remote
-    ci = commit
+    ci = commit -m
     co = checkout
     current-branch = rev-parse --abbrev-ref HEAD
     d = diff
     dn = --no-pager diff
     dc = diff --cached
     di = diff
-    dic = diff --cached
+    d1 = diff HEAD HEAD~1
     f = fetch --prune
     fs = !git f && git su
     ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >> .gitignore

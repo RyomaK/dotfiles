@@ -22,7 +22,7 @@ setting:
 	$(foreach setting,$(settings),sh setting_$(setting).sh)
 
 PWD:=$(shell pwd)
-srcs:=vimrc vim gitconfig zshrc tmux.conf zshrc.mine
+srcs:=vimrc vim gitconfig zshrc tigrc tmux.conf zshrc.mine zshrc.function.private zshrc.function
 link: ${HOME}/src/github.com/zsh-users/antigen
 	$(foreach src,$(srcs),ln -Fs $(PWD)/$(src) $(HOME)/.$(src);)
 

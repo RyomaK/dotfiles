@@ -1,49 +1,3 @@
-
-"Plugin Installing
-call plug#begin()
-
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-Plug 'mattn/vim-lsp-icons'
-Plug 'Shougo/deoplete.nvim'
-Plug 'lighttiger2505/deoplete-vim-lsp'
-Plug 'preservim/nerdtree'
-
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
-
-call plug#end()
-
-if empty(globpath(&rtp, 'autoload/lsp.vim'))
-  finish
-endif
-
-
-" =========================
-" vim-lsp setting
-" =========================
-function! s:on_lsp_buffer_enabled() abort
-  setlocal omnifunc=lsp#complete
-  setlocal signcolumn=yes
-  nmap <buffer> gd <plug>(lsp-definition)
-  nmap <buffer> <f2> <plug>(lsp-rename)
-  inoremap <expr> <cr> pumvisible() ? "\<c-y>\<cr>" : "\<cr>"
-endfunction
-
-augroup lsp_install
-  au!
-  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
-command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/lsp.log')
-
-let g:lsp_diagnostics_enabled = 1
-let g:lsp_diagnostics_echo_cursor = 1
-let g:asyncomplete_auto_popup = 1
-let g:asyncomplete_auto_completeopt = 0
-let g:asyncomplete_popup_delay = 200
-let g:lsp_text_edit_enabled = 1
-
-
 "==========================
 "init
 "==========================
@@ -61,14 +15,21 @@ set title
 set scrolloff=5
 set ambiwidth=double
 
-if has('gui_running')
-    set t_Co=16
-    let g:solarized_termcolors=16
-else
-    let g:solarized_termtrans=1
-endif
+"==========================
+"display
+"==========================
+
+set t_Co=256
+
+"color schema
+syntax enable
 set background=dark
-colorscheme solarized
+colorscheme iceberg
+
+" vimrc :h xterm-true-color
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 if v:version >= 700
     set cursorline
@@ -93,6 +54,20 @@ let g:markdown_fenced_languages = [
 \  'php',
 \]
 
+" クリップボードからペーストのときインデントしない
+if &term =~ "xterm"
+  let &t_SI .= "\e[?2004h"
+  let &t_EI .= "\e[?2004l"
+  let &pastetoggle = "\e[201~"
+  function XTermPasteBegin(ret)
+    set paste
+    return a:ret
+  endfunction
+  inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+endif
+" escape遅いの回避
+set ttimeoutlen=10 
+
 "==========================
 "Searching and Moving
 "==========================
@@ -104,6 +79,10 @@ set incsearch
 set showmatch
 set hlsearch
 set wrapscan
+" display tab space 
+set list
+set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
+
 
 " In visual mode, tab means insert <tab> into highlighted block.
 vnoremap <Tab> >gv
@@ -115,6 +94,14 @@ cnoremap <expr> /
 cnoremap <expr> ?
             \ getcmdtype() == '?' ? '\?' : '?'
 
+" j, k による移動を折り返されたテキストでも自然に振る舞うように変更
+nnoremap j gj
+nnoremap k gk
+
+" backspace
+set nocompatible
+set whichwrap=b,s,h,l,<,>,[,]
+set backspace=indent,eol,start
 "==========================
 "language
 "==========================
@@ -128,6 +115,7 @@ set fileformats=unix,dos,mac
 "clipboard
 "==========================
 set clipboard+=autoselect
+
 
 "==========================
 "Backup
@@ -152,4 +140,8 @@ set laststatus=2 "ステータスラインを常に表示
 set splitright "Window Split時に新Windowを右に表示
 set splitbelow "Window Split時に新windowを下に表示
 
+"==========================
+"load setting vimrc
+"==========================
 
+runtime! _config/*.vim
