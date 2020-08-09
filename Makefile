@@ -1,38 +1,30 @@
-.PHONY: nvim fish mac
+all: install
 
-init: nvim fish mac terminal git ## setup and install all
+install: deps brew setting link
 
-clean: ## delete auto created file and directory
-	rm -rf ~/langserver
+deps:
+	which brew || /usr/bin/ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-nvim-clean: ## when python3 neovim is broken, run this.
-	rm -rf /usr/local/lib/python3.7/site-packages/
-	brew uninstall --ignore-dependencies python3
-	rm -rf ~/.config/dein/.cache
-	rm -rf ~/.config/dein/cache_nvim
-	brew insall python3
-	pip3 install neovim
+brew:
+	brew install wget hub tig tree tmux reattach-to-user-namespace ghq peco node goenv
+	brew cleanup
 
-nvim: ## install and setup neovim
-	bash ./nvim/bin/init.sh
+brew-cask:
+	brew cask install chrome
+	which docker || brew install docker
+	which code || brew cask install visual-studio-code
 
-nvim-clean: ## when python3 neovim is broken, run this.
-	rm -rf /usr/local/lib/python3.7/site-packages/
-	brew uninstall --ignore-dependencies python3
-	rm -rf ~/.config/dein/.cache
-	rm -rf ~/.config/dein/cache_nvim
-	brew install python3
-	pip3 install neovim
+${HOME}/src/github.com/zsh-users/antigen:
+	git clone git@github.com:zsh-users/antigen.git $@
 
-fish: ## install and setup fish
-	bash ./fish/bin/init.sh
+settings:=vimrc
+setting:
+	$(foreach setting,$(settings),sh setting_$(setting).sh)
 
-mac: ## install mac app
-	bash ./mac/bin/init.sh
+PWD:=$(shell pwd)
+srcs:=vimrc vim gitconfig zshrc tmux.conf zshrc.mine
+link: ${HOME}/src/github.com/zsh-users/antigen
+	$(foreach src,$(srcs),ln -Fs $(PWD)/$(src) $(HOME)/.$(src);)
 
-terminal: ## setup terminal setting
-	bash ./mac/bin/terminal.sh
-
-git: ## setup gitconfig and so on...
-	bash ./mac/bin/git.sh
+.PHONY: install deps brew brew-cask link
 
