@@ -1,1 +1,12 @@
+function la(){
+    ls -altr
+}
+
+function sw(){
+    if [ $# != 2 ]; then
+        echo "example sw fix ./develop"
+        break
+    fi
+    grep -rn  "$1" ./$2
+}
 
