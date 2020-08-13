@@ -141,6 +141,24 @@ set splitright "Window Split時に新Windowを右に表示
 set splitbelow "Window Split時に新windowを下に表示
 
 "==========================
+"short cut
+"==========================
+"Split window
+nmap ss :split<Return><C-w>w
+nmap sv :vsplit<Return><C-w>w
+
+" Move window
+map sh <C-w>h
+map sk <C-w>k
+map sj <C-w>j
+map sl <C-w>l
+
+" Switch tab
+nmap <S-Tab> :tabprev<Return>
+nmap <Tab> :tabnext<Return>
+
+
+"==========================
 "load setting vimrc
 "==========================
 

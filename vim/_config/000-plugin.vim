@@ -35,10 +35,12 @@ Plug 'mattn/vim-lsp-icons'
 Plug 'mattn/vim-goimports'
 Plug 'Shougo/deoplete.nvim'
 Plug 'lighttiger2505/deoplete-vim-lsp'
-Plug 'preservim/nerdtree'
 
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
+
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimfiler'
 
 Plug 'cocopon/pgmnt.vim'
 

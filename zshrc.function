@@ -10,3 +10,9 @@ function se(){
     grep -rn  "$1" ./$2
 }
 
+
+function vide(){
+    tmux split-window -v -p 30
+    tmux split-window -h -p 66
+    tmux split-window -h -p 50
+}
