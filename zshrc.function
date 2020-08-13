@@ -2,9 +2,9 @@ function la(){
     ls -altr
 }
 
-function sw(){
+function se(){
     if [ $# != 2 ]; then
-        echo "example sw fix ./develop"
+        echo "example se fix ./develop"
         break
     fi
     grep -rn  "$1" ./$2
