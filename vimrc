@@ -157,6 +157,11 @@ map sl <C-w>l
 nmap <S-Tab> :tabprev<Return>
 nmap <Tab> :tabnext<Return>
 
+" Resize window
+nmap <C-w><left> <C-w><
+nmap <C-w><right> <C-w>>
+nmap <C-w><up> <C-w>+
+nmap <C-w><down> <C-w>-
 
 "==========================
 "load setting vimrc
