@@ -145,7 +145,7 @@ set splitbelow "Window Split時に新windowを下に表示
 "==========================
 "Split window
 nmap ss :split<Return><C-w>w
-nmap vs :vsplit<Return><C-w>w
+nmap sv :vsplit<Return><C-w>w
 
 " Move window
 map sh <C-w>h
