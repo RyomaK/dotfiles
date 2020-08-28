@@ -1,0 +1,30 @@
+[[plugins]]
+repo='prabirshrestha/vim-lsp'
+
+[[plugins]]
+repo='mattn/vim-lsp-settings'
+
+[[plugins]]
+repo='mattn/vim-lsp-settings'
+
+[[plugins]]
+repo='mattn/vim-lsp-icons'
+
+[[plugins]]
+repo='mattn/vim-goimports'
+
+[[plugins]]
+repo='Shougo/vimfiler'
+
+[[plugins]]
+repo='Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+on_i = 1
+hook_add = '''
+  let g:deoplete#enable_at_startup = 1
+  let g:python3_host_prog='/usr/local/bin/python3'
+ '''
+
+

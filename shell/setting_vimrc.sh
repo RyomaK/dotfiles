@@ -3,5 +3,5 @@
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-mkdir -r $HOME/.vimback
-mkdir -r $HOME/.vimtmp
+mkdir -p $HOME/.vimback
+mkdir -p $HOME/.vimtmp
