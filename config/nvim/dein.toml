@@ -27,4 +27,8 @@ hook_add = '''
   let g:python3_host_prog='/usr/local/bin/python3'
  '''
 
-
+[[plugins]]
+repo='sebdah/vim-delve'
+hook_source='''
+let g:delve_backend = "default"
+'''

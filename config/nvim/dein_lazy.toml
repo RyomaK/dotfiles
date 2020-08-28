@@ -16,10 +16,4 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo='sebdah/vim-delve'
-hook_source='''
-let g:delve_backend = "native"
-'''
-
-[[plugins]]
 repo='Shougo/unite.vim'
