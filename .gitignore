@@ -1,1 +1,7 @@
 zshrc.function.private
+
+config/**
+!config/dein/**
+!config/nvim/**
+
+
