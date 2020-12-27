@@ -81,4 +81,3 @@ fi
 # for custom
 source $HOME/.zshrc.mine
 
-
