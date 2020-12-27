@@ -10,6 +10,8 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # install go
 export PATH="$HOME/.goenv/bin:$PATH"
 eval "$(goenv init -)"
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
 export GOPATH=$HOME
 export PATH="$GOPATH/bin:$PATH"
 export GOENV_DISABLE_GOPATH=1
@@ -20,6 +22,7 @@ eval "$(direnv hook zsh)"
 # install node
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
+
 
 # install python
 export PATH="$HOME/.pyenv/bin:$PATH"
