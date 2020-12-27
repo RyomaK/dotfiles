@@ -31,3 +31,6 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 alias tree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/|  /g'"
 
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/Users/ryomak/src/github.com/flutter/flutter/bin:$PATH"
+
+
