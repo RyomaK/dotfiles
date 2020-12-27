@@ -38,3 +38,4 @@ link: ${HOME}/src/github.com/zsh-users/antigen
 	$(foreach src,$(srcs),ln -Fs $(PWD)/$(src) $(HOME)/.$(src);)
 
 .PHONY: install deps brew brew-cask link
+

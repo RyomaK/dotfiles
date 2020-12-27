@@ -23,13 +23,6 @@ eval "$(direnv hook zsh)"
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
 
-
-# install python
-export PATH="$HOME/.pyenv/bin:$PATH"
-export WORKON_HOME="$HOME/.virtualenvs"
-eval "$(pyenv init -)"
-eval "(python -m virtualfish)"
-
 # flutter 
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 #export PATH="$HOME/binbin:$PATH"
